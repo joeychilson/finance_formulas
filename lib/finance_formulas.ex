@@ -30,7 +30,9 @@ defmodule FinanceFormulas do
   * `total_assets` - The total assets of the entity.
   * `sales_revenue` - The sales/revenue of the entity.
   """
-  def asset_to_sales_ratio(total_assets, sales_revenue), do: total_assets / sales_revenue
+  def asset_to_sales_ratio(total_assets, sales_revenue)
+      when sales_revenue != 0,
+      do: total_assets / sales_revenue
 
   @doc """
   Calculates the asset turnover ratio of an entity.
@@ -44,7 +46,9 @@ defmodule FinanceFormulas do
   * `sales_revenue` - The sales/revenue of the entity.
   * `total_asset` - The total assets of the entity.
   """
-  def asset_turnover_ratio(sales_revenue, total_assets), do: sales_revenue / total_assets
+  def asset_turnover_ratio(sales_revenue, total_assets)
+      when total_assets != 0,
+      do: sales_revenue / total_assets
 
   @doc """
   Calculates the average collection period of an entity.
@@ -57,7 +61,9 @@ defmodule FinanceFormulas do
 
   * `receivables_turnover_ratio` - The receivables turnover ratio of the entity.
   """
-  def average_collection_period(receivables_turnover_ratio), do: 365 / receivables_turnover_ratio
+  def average_collection_period(receivables_turnover_ratio)
+      when receivables_turnover_ratio != 0,
+      do: 365 / receivables_turnover_ratio
 
   @doc """
   Calculates the average inventory of an entity.
@@ -87,8 +93,9 @@ defmodule FinanceFormulas do
   * `credit_purchases` - The credit purchases of the entity.
   * `days_in_period` - The number of days in the period.
   """
-  def average_payment_period(average_accounts_payable, credit_purchases, days_in_period),
-    do: average_accounts_payable / (credit_purchases / days_in_period)
+  def average_payment_period(average_accounts_payable, credit_purchases, days_in_period)
+      when days_in_period != 0,
+      do: average_accounts_payable / (credit_purchases / days_in_period)
 
   @doc """
   Calculates the bid ask spread of a security.
@@ -120,8 +127,9 @@ defmodule FinanceFormulas do
 
   * `days_to_maturity` - The number of days until the bond matures. Defaults to 365.
   """
-  def bond_equivalent_yield(face_value, bond_price, days_to_maturity \\ 365),
-    do: (face_value - bond_price) / bond_price * (365 / days_to_maturity)
+  def bond_equivalent_yield(face_value, bond_price, days_to_maturity \\ 365)
+      when bond_price != 0 and days_to_maturity != 0,
+      do: (face_value - bond_price) / bond_price * (365 / days_to_maturity)
 
   @doc """
   Calculates the book value per share of an entity.
@@ -135,8 +143,9 @@ defmodule FinanceFormulas do
   * `total_common_equity` - The total common equity of the entity.
   * `number_of_common_shares` - The number of common shares of the entity.
   """
-  def book_value_per_share(total_common_equity, number_of_common_shares),
-    do: total_common_equity / number_of_common_shares
+  def book_value_per_share(total_common_equity, number_of_common_shares)
+      when number_of_common_shares != 0,
+      do: total_common_equity / number_of_common_shares
 
   @doc """
   Calculates the capital asset pricing model (CAPM).
@@ -166,8 +175,9 @@ defmodule FinanceFormulas do
   * `initial_price` - The initial price of the investment.
   * `final_price` - The final price of the investment.
   """
-  def capital_gains_yield(initial_price, final_price),
-    do: (final_price - initial_price) / initial_price
+  def capital_gains_yield(initial_price, final_price)
+      when initial_price != 0,
+      do: (final_price - initial_price) / initial_price
 
   @doc """
   Calculates the cash conversion cycle of an entity.
@@ -235,8 +245,9 @@ defmodule FinanceFormulas do
   * `contribution_margin` - The contribution margin
   * `total_sales_revenue` - The total sales revenue
   """
-  def contribution_margin_ratio(contribution_margin, total_sales_revenue),
-    do: contribution_margin / total_sales_revenue
+  def contribution_margin_ratio(contribution_margin, total_sales_revenue)
+      when total_sales_revenue != 0,
+      do: contribution_margin / total_sales_revenue
 
   @doc """
   Calculates the continuous compounding of an investment.
@@ -282,8 +293,9 @@ defmodule FinanceFormulas do
   * `operational_costs` - The operational costs of the entity.
   * `operational_income` - The operational income of the entity.
   """
-  def cost_to_income_ratio(operational_costs, operational_income),
-    do: operational_costs / operational_income
+  def cost_to_income_ratio(operational_costs, operational_income)
+      when operational_income != 0,
+      do: operational_costs / operational_income
 
   @doc """
   Calculates the current ratio of an entity.
@@ -297,7 +309,9 @@ defmodule FinanceFormulas do
   * `current_assets` - The current assets of the entity.
   * `current_liabilities` - The current liabilities of the entity.
   """
-  def current_ratio(current_assets, current_liabilities), do: current_assets / current_liabilities
+  def current_ratio(current_assets, current_liabilities)
+      when current_liabilities != 0,
+      do: current_assets / current_liabilities
 
   @doc """
   Calculates the current yield of a bond.
@@ -311,7 +325,9 @@ defmodule FinanceFormulas do
   * `annual_coupons` - The annual coupons of the bond.
   * `current_price` - The current price of the bond.
   """
-  def current_yield(annual_coupons, current_price), do: annual_coupons / current_price
+  def current_yield(annual_coupons, current_price)
+      when current_price != 0,
+      do: annual_coupons / current_price
 
   @doc """
   Calculates the inventory turnover of an entity.
@@ -324,7 +340,9 @@ defmodule FinanceFormulas do
 
   * `inventory_turnover` - The inventory turnover of the entity.
   """
-  def days_in_inventory(inventory_turnover), do: 365 / inventory_turnover
+  def days_in_inventory(inventory_turnover)
+      when inventory_turnover != 0,
+      do: 365 / inventory_turnover
 
   @doc """
   Calculates the days sales of inventory of an entity.
@@ -338,8 +356,9 @@ defmodule FinanceFormulas do
   * `average_inventory` - The average inventory of the entity.
   * `cost_of_goods_sold` - The cost of goods sold of the entity.
   """
-  def days_sales_of_inventory(average_inventory, cost_of_goods_sold),
-    do: average_inventory / cost_of_goods_sold * 365
+  def days_sales_of_inventory(average_inventory, cost_of_goods_sold)
+      when cost_of_goods_sold != 0,
+      do: average_inventory / cost_of_goods_sold * 365
 
   @doc """
   Calculates the days sales outstanding of an entity.
@@ -353,8 +372,9 @@ defmodule FinanceFormulas do
   * `accounts_receivable` - The accounts receivable of the entity.
   * `total_credit_sales` - The total credit sales of the entity.
   """
-  def days_sales_outstanding(accounts_receivable, total_credit_sales),
-    do: accounts_receivable / total_credit_sales * 365
+  def days_sales_outstanding(accounts_receivable, total_credit_sales)
+      when total_credit_sales != 0,
+      do: accounts_receivable / total_credit_sales * 365
 
   @doc """
   Calculates the days payable outstanding of an entity.
@@ -368,8 +388,9 @@ defmodule FinanceFormulas do
   * `accounts_payable` - The accounts payable of the entity.
   * `cost_of_goods_sold` - The cost of goods sold of the entity.
   """
-  def days_payable_outstanding(accounts_payable, cost_of_goods_sold),
-    do: accounts_payable / cost_of_goods_sold * 365
+  def days_payable_outstanding(accounts_payable, cost_of_goods_sold)
+      when cost_of_goods_sold != 0,
+      do: accounts_payable / cost_of_goods_sold * 365
 
   @doc """
   Calculates the debt coverage ratio of an entity.
@@ -383,8 +404,9 @@ defmodule FinanceFormulas do
   * `net_operating_income` - The net operating income of the entity.
   * `total_debt_service` - The total debt service of the entity.
   """
-  def debt_coverage_ratio(net_operating_income, total_debt_service),
-    do: net_operating_income / total_debt_service
+  def debt_coverage_ratio(net_operating_income, total_debt_service)
+      when total_debt_service != 0,
+      do: net_operating_income / total_debt_service
 
   @doc """
   Calculates the debt ratio of an entity.
@@ -398,7 +420,9 @@ defmodule FinanceFormulas do
   * `total_liabilities` - The total liabilities of the entity.
   * `total_assets` - The total assets of the entity.
   """
-  def debt_ratio(total_liabilities, total_assets), do: total_liabilities / total_assets
+  def debt_ratio(total_liabilities, total_assets)
+      when total_assets != 0,
+      do: total_liabilities / total_assets
 
   @doc """
   Calculates the debt to equity ratio of an entity.
@@ -412,7 +436,9 @@ defmodule FinanceFormulas do
   * `total_liabilities` - The total liabilities of the entity.
   * `total_equity` - The total equity of the entity.
   """
-  def debt_to_equity_ratio(total_liabilities, total_equity), do: total_liabilities / total_equity
+  def debt_to_equity_ratio(total_liabilities, total_equity)
+      when total_equity != 0,
+      do: total_liabilities / total_equity
 
   @doc """
   Calculates the debt to income ratio of an entity.
@@ -426,7 +452,9 @@ defmodule FinanceFormulas do
   * `debt` - The total debt of the entity.
   * `income` - The total income of the entity.
   """
-  def debt_to_income_ratio(debt, income), do: debt / income
+  def debt_to_income_ratio(debt, income)
+      when income != 0,
+      do: debt / income
 
   @doc """
   Calculates the diluted earnings per share of an entity.
@@ -441,8 +469,9 @@ defmodule FinanceFormulas do
   * `average_shares` - The average shares of the entity.
   * `other_convertible_instruments` - The other convertible instruments of the entity.
   """
-  def diluted_earnings_per_share(net_income, average_shares, other_convertible_instruments \\ 0),
-    do: net_income / (average_shares + other_convertible_instruments)
+  def diluted_earnings_per_share(net_income, average_shares, other_convertible_instruments \\ 0)
+      when average_shares + other_convertible_instruments != 0,
+      do: net_income / (average_shares + other_convertible_instruments)
 
   @doc """
   Calculates the dividend payout ratio of an entity.
@@ -456,7 +485,9 @@ defmodule FinanceFormulas do
   * `dividends` - The dividends of the entity.
   * `net_income` - The net income of the entity.
   """
-  def dividend_payout_ratio(dividends, net_income), do: dividends / net_income
+  def dividend_payout_ratio(dividends, net_income)
+      when net_income != 0,
+      do: dividends / net_income
 
   @doc """
   Calculates the dividend yield of an entity.
@@ -470,7 +501,9 @@ defmodule FinanceFormulas do
   * `dividends` - The dividends of the entity.
   * `current_price` - The current price of the entity.
   """
-  def dividend_yield(dividends, current_price), do: dividends / current_price
+  def dividend_yield(dividends, current_price)
+      when current_price != 0,
+      do: dividends / current_price
 
   @doc """
   Calculates the divdends per share of an entity.
@@ -484,7 +517,9 @@ defmodule FinanceFormulas do
   * `dividends` - The dividends of the entity.
   * `shares` - The shares of the entity.
   """
-  def dividens_per_share(dividends, shares), do: dividends / shares
+  def dividens_per_share(dividends, shares)
+      when shares != 0,
+      do: dividends / shares
 
   @doc """
   Calculates the doubling time of an investment.
@@ -510,7 +545,9 @@ defmodule FinanceFormulas do
 
   * `rate_of_returns` - The rate of returns of the investment.
   """
-  def doubling_time_continuous_compounding(rate_of_returns), do: :math.log(2) / rate_of_returns
+  def doubling_time_continuous_compounding(rate_of_returns)
+      when rate_of_returns != 0,
+      do: :math.log(2) / rate_of_returns
 
   @doc """
   Calculates the doubling time of an investment with simple interest.
@@ -523,7 +560,9 @@ defmodule FinanceFormulas do
 
   * `rate_of_returns` - The rate of returns of the investment.
   """
-  def doubling_time_simple(rate_of_returns), do: 1 / rate_of_returns
+  def doubling_time_simple(rate_of_returns)
+      when rate_of_returns != 0,
+      do: 1 / rate_of_returns
 
   @doc """
   Calculates the earnings per share of an entity.
@@ -537,7 +576,9 @@ defmodule FinanceFormulas do
   * `net_income` - The net income of the entity.
   * `average_shares` - The average shares of the entity.
   """
-  def earnings_per_share(net_income, average_shares), do: net_income / average_shares
+  def earnings_per_share(net_income, average_shares)
+      when average_shares != 0,
+      do: net_income / average_shares
 
   @doc """
   Calculates the ebit of an entity.
@@ -584,7 +625,9 @@ defmodule FinanceFormulas do
   * `total_assets` - The total assets of the entity.
   * `total_equity` - The total equity of the entity.
   """
-  def equity_multiplier(total_assets, total_equity), do: total_assets / total_equity
+  def equity_multiplier(total_assets, total_equity)
+      when total_equity != 0,
+      do: total_assets / total_equity
 
   @doc """
   Calculates the estimated earnings of an entity.
@@ -698,8 +741,9 @@ defmodule FinanceFormulas do
   * `interest_rate` - The interest rate of the investment.
   * `number_of_payments` - The number of payments.
   """
-  def future_value_of_annuity(payment, interest_rate, number_of_payments),
-    do: payment * ((:math.pow(1 + interest_rate, number_of_payments) - 1) / interest_rate)
+  def future_value_of_annuity(payment, interest_rate, number_of_payments)
+      when interest_rate != 0,
+      do: payment * ((:math.pow(1 + interest_rate, number_of_payments) - 1) / interest_rate)
 
   @doc """
   Calculates the geometric mean of a set of returns.
@@ -733,8 +777,9 @@ defmodule FinanceFormulas do
   * `sales_revenue` - The sales/revenue of the entity.
   * `cost_of_goods_sold` - The cost of goods sold of the entity.
   """
-  def gross_profit_margin(sales_revenue, cost_of_goods_sold),
-    do: (sales_revenue - cost_of_goods_sold) / sales_revenue
+  def gross_profit_margin(sales_revenue, cost_of_goods_sold)
+      when sales_revenue != 0,
+      do: (sales_revenue - cost_of_goods_sold) / sales_revenue
 
   @doc """
   Calculates the interest coverage ratio of an entity.
@@ -748,7 +793,9 @@ defmodule FinanceFormulas do
   * `ebit` - The earnings before interest and taxes of the entity.
   * `interest_expense` - The interest expense of the entity.
   """
-  def interest_coverage_ratio(ebit, interest_expense), do: ebit / interest_expense
+  def interest_coverage_ratio(ebit, interest_expense)
+      when interest_expense != 0,
+      do: ebit / interest_expense
 
   @doc """
   Calculates the inventory turnover ratio of an entity.
@@ -762,7 +809,9 @@ defmodule FinanceFormulas do
   * `sales_revenue` - The sales/revenue of the entity.
   * `inventory` - The inventory of the entity.
   """
-  def inventory_turnover_ratio(sales_revenue, inventory), do: sales_revenue / inventory
+  def inventory_turnover_ratio(sales_revenue, inventory)
+      when inventory != 0,
+      do: sales_revenue / inventory
 
   @doc """
   Calculates the loan to deposit ratio of an entity.
@@ -776,7 +825,9 @@ defmodule FinanceFormulas do
   * `total_loans` - The total loans of the entity.
   * `total_deposits` - The total deposits of the entity.
   """
-  def loan_to_deposit_ratio(total_loans, total_deposits), do: total_loans / total_deposits
+  def loan_to_deposit_ratio(total_loans, total_deposits)
+      when total_deposits != 0,
+      do: total_loans / total_deposits
 
   @doc """
   Calculates the margin of safety of an investment.
@@ -790,8 +841,9 @@ defmodule FinanceFormulas do
   * `current_price` - The current price of the investment.
   * `intrinsic_value` - The intrinsic value of the investment.
   """
-  def margin_of_safty(current_price, intrinsic_value),
-    do: (intrinsic_value - current_price) / intrinsic_value
+  def margin_of_safty(current_price, intrinsic_value)
+      when intrinsic_value != 0,
+      do: (intrinsic_value - current_price) / intrinsic_value
 
   @doc """
   Calculates the market capitalization of an entity.
@@ -820,8 +872,9 @@ defmodule FinanceFormulas do
   * `market_price_per_share` - The market price per share of the entity.
   * `book_value_per_share` - The book value per share of the entity.
   """
-  def market_to_book_ratio(market_price_per_share, book_value_per_share),
-    do: market_price_per_share / book_value_per_share
+  def market_to_book_ratio(market_price_per_share, book_value_per_share)
+      when book_value_per_share != 0,
+      do: market_price_per_share / book_value_per_share
 
   @doc """
   Calculates the net asset value of an entity.
@@ -836,7 +889,9 @@ defmodule FinanceFormulas do
   * `liabilities` - The liabilities of the entity.
   * `shares` - The shares of the entity.
   """
-  def net_asset_value(assets, liabilities, shares), do: (assets - liabilities) / shares
+  def net_asset_value(assets, liabilities, shares)
+      when shares != 0,
+      do: (assets - liabilities) / shares
 
   @doc """
   Calculates the net intrest income of an entity.
@@ -864,8 +919,9 @@ defmodule FinanceFormulas do
   * `net_intrest_income` - The net intrest income of the entity.
   * `average_earning_assets` - The average earning assets of the entity.
   """
-  def net_intrest_margin(net_intrest_income, average_earning_assets),
-    do: net_intrest_income / average_earning_assets
+  def net_intrest_margin(net_intrest_income, average_earning_assets)
+      when average_earning_assets != 0,
+      do: net_intrest_income / average_earning_assets
 
   @doc """
   Calculates the net intrest spread of an entity.
@@ -917,7 +973,9 @@ defmodule FinanceFormulas do
   * `net_income` - The net income of the entity.
   * `sales_revenue` - The sales/revenue of the entity.
   """
-  def net_profit_margin(net_income, sales_revenue), do: net_income / sales_revenue
+  def net_profit_margin(net_income, sales_revenue)
+      when sales_revenue != 0,
+      do: net_income / sales_revenue
 
   @doc """
   Calculates the net working capital of an entity.
@@ -961,7 +1019,9 @@ defmodule FinanceFormulas do
   * `operating_income` - The operating income of the entity.
   * `sales_revenue` - The sales/revenue of the entity.
   """
-  def operating_margin(operating_income, sales_revenue), do: operating_income / sales_revenue
+  def operating_margin(operating_income, sales_revenue)
+      when sales_revenue != 0,
+      do: operating_income / sales_revenue
 
   @doc """
   Calculates the payables turnover ratio of an entity.
@@ -975,8 +1035,9 @@ defmodule FinanceFormulas do
   * `cost_of_goods_sold` - The cost of goods sold of the entity.
   * `average_accounts_payable` - The average accounts payable of the entity.
   """
-  def payables_turnover_ratio(cost_of_goods_sold, average_accounts_payable),
-    do: cost_of_goods_sold / average_accounts_payable
+  def payables_turnover_ratio(cost_of_goods_sold, average_accounts_payable)
+      when average_accounts_payable != 0,
+      do: cost_of_goods_sold / average_accounts_payable
 
   @doc """
   Calculates the payback period of an investment.
@@ -990,8 +1051,9 @@ defmodule FinanceFormulas do
   * `initial_investment` - The initial investment of the entity.
   * `periodic_cash_flows` - The periodic cash flows of the entity.
   """
-  def payback_period(initial_investment, periodic_cash_flows),
-    do: initial_investment / periodic_cash_flows
+  def payback_period(initial_investment, periodic_cash_flows)
+      when periodic_cash_flows != 0,
+      do: initial_investment / periodic_cash_flows
 
   @doc """
   Calculates the perpetuity yield.
@@ -1005,7 +1067,9 @@ defmodule FinanceFormulas do
   * `payment` - The payment of the entity.
   * `present_value` - The present value of the entity.
   """
-  def perpetuity_yield(payment, present_value), do: payment / present_value
+  def perpetuity_yield(payment, present_value)
+      when present_value != 0,
+      do: payment / present_value
 
   @doc """
   Calculates the preferred stock value.
@@ -1019,7 +1083,9 @@ defmodule FinanceFormulas do
   * `dividend` - The dividend of the entity.
   * `discount_rate` - The discount rate of the entity.
   """
-  def preferred_stock_value(dividend, discount_rate), do: dividend / discount_rate
+  def preferred_stock_value(dividend, discount_rate)
+      when discount_rate != 0,
+      do: dividend / discount_rate
 
   @doc """
   Calculates the present value.
@@ -1050,8 +1116,9 @@ defmodule FinanceFormulas do
   * `rate` - The rate of return of the entity.
   * `time` - The number of periods of the entity.
   """
-  def present_value_continuous_compounding(cash_flow, rate, time),
-    do: cash_flow / :math.exp(rate * time)
+  def present_value_continuous_compounding(cash_flow, rate, time)
+      when rate * time != 0,
+      do: cash_flow / :math.exp(rate * time)
 
   @doc """
   Calculates the present value of perpetuity.
@@ -1065,8 +1132,9 @@ defmodule FinanceFormulas do
   * `coupon_per_period` - The coupon per period of the entity.
   * `discount_rate` - The discount rate of the entity.
   """
-  def present_value_of_perpetuity(coupon_per_period, discount_rate),
-    do: coupon_per_period / discount_rate
+  def present_value_of_perpetuity(coupon_per_period, discount_rate)
+      when discount_rate != 0,
+      do: coupon_per_period / discount_rate
 
   @doc """
   Calculates the price to book value.
@@ -1080,8 +1148,9 @@ defmodule FinanceFormulas do
   * `price_per_share` - The price per share of the entity.
   * `book_value_per_share` - The book value per share of the entity.
   """
-  def price_to_book_value(price_per_share, book_value_per_share),
-    do: price_per_share / book_value_per_share
+  def price_to_book_value(price_per_share, book_value_per_share)
+      when book_value_per_share != 0,
+      do: price_per_share / book_value_per_share
 
   @doc """
   Calculates the price to cash flow.
@@ -1095,8 +1164,9 @@ defmodule FinanceFormulas do
   * `market_capitalization` - The market capitalization of the entity.
   * `cash_flow` - The cash flow of the entity.
   """
-  def price_to_cash_flow(market_capitalization, operating_cash_flow),
-    do: market_capitalization / operating_cash_flow
+  def price_to_cash_flow(market_capitalization, operating_cash_flow)
+      when operating_cash_flow != 0,
+      do: market_capitalization / operating_cash_flow
 
   @doc """
   Calculates the price to dividend ratio.
@@ -1110,8 +1180,9 @@ defmodule FinanceFormulas do
   * `price_per_share` - The price per share of the entity.
   * `dividend_per_share` - The dividend per share of the entity.
   """
-  def price_to_dividend_ratio(price_per_share, dividend_per_share),
-    do: price_per_share / dividend_per_share
+  def price_to_dividend_ratio(price_per_share, dividend_per_share)
+      when dividend_per_share != 0,
+      do: price_per_share / dividend_per_share
 
   @doc """
   Calculates the price to earnings ratio.
@@ -1125,8 +1196,9 @@ defmodule FinanceFormulas do
   * `price_per_share` - The price per share of the entity.
   * `earnings_per_share` - The earnings per share of the entity.
   """
-  def price_to_earnings_ratio(price_per_share, earnings_per_share),
-    do: price_per_share / earnings_per_share
+  def price_to_earnings_ratio(price_per_share, earnings_per_share)
+      when earnings_per_share != 0,
+      do: price_per_share / earnings_per_share
 
   @doc """
   Calculates the price to sales ratio.
@@ -1140,8 +1212,9 @@ defmodule FinanceFormulas do
   * `price_per_share` - The price per share of the entity.
   * `sales_per_share` - The sales per share of the entity.
   """
-  def price_to_sales_ratio(price_per_share, sales_per_share),
-    do: price_per_share / sales_per_share
+  def price_to_sales_ratio(price_per_share, sales_per_share)
+      when sales_per_share != 0,
+      do: price_per_share / sales_per_share
 
   @doc """
   Calculates the profitability index.
@@ -1155,8 +1228,9 @@ defmodule FinanceFormulas do
   * `present_value_of_future_cash_flows` - The present value of future cash flows of the entity.
   * `initial_investment` - The initial investment of the entity.
   """
-  def profitability_index(present_value_of_future_cash_flows, initial_investment),
-    do: present_value_of_future_cash_flows / initial_investment
+  def profitability_index(present_value_of_future_cash_flows, initial_investment)
+      when initial_investment != 0,
+      do: present_value_of_future_cash_flows / initial_investment
 
   @doc """
   Calculates the quick ratio.
@@ -1170,7 +1244,9 @@ defmodule FinanceFormulas do
   * `quick_assets` - The quick assets of the entity.
   * `current_liabilities` - The current liabilities of the entity.
   """
-  def quick_ratio(quick_assets, current_liabilities), do: quick_assets / current_liabilities
+  def quick_ratio(quick_assets, current_liabilities)
+      when current_liabilities != 0,
+      do: quick_assets / current_liabilities
 
   @doc """
   Calculates the quick ratio.
@@ -1185,8 +1261,9 @@ defmodule FinanceFormulas do
   * `inventory` - The inventory of the entity.
   * `current_liabilities` - The current liabilities of the entity.
   """
-  def quick_ratio(current_assets, inventory, current_liabilities),
-    do: (current_assets - inventory) / current_liabilities
+  def quick_ratio(current_assets, inventory, current_liabilities)
+      when current_liabilities != 0,
+      do: (current_assets - inventory) / current_liabilities
 
   @doc """
   Calculates the real GDP.
@@ -1200,7 +1277,9 @@ defmodule FinanceFormulas do
   * `nominal_gdp` - The nominal GDP.
   * `gdp_deflator` - The GDP deflator.
   """
-  def real_gdp(nominal_gdp, gdp_deflator), do: nominal_gdp / gdp_deflator
+  def real_gdp(nominal_gdp, gdp_deflator)
+      when gdp_deflator != 0,
+      do: nominal_gdp / gdp_deflator
 
   @doc """
   Calculates the receivables turnover ratio of an entity.
@@ -1214,8 +1293,9 @@ defmodule FinanceFormulas do
   * `net_credit_sales` - The net credit sales of the entity.
   * `average_accounts_receivable` - The average accounts receivable of the entity.
   """
-  def receivables_turnover_ratio(net_credit_sales, average_accounts_receivable),
-    do: net_credit_sales / average_accounts_receivable
+  def receivables_turnover_ratio(net_credit_sales, average_accounts_receivable)
+      when average_accounts_receivable != 0,
+      do: net_credit_sales / average_accounts_receivable
 
   @doc """
   Calculates the retained earnings of an entity.
@@ -1243,7 +1323,9 @@ defmodule FinanceFormulas do
   * `net_income` - The net income of the entity.
   * `dividends` - The dividends of the entity.
   """
-  def retention_ratio(net_income, dividends), do: (net_income - dividends) / net_income
+  def retention_ratio(net_income, dividends)
+      when net_income != 0,
+      do: (net_income - dividends) / net_income
 
   @doc """
   Calculates the return on assets.
@@ -1257,7 +1339,9 @@ defmodule FinanceFormulas do
   * `net_income` - The net income of the entity.
   * `average_total_assets` - The average total assets of the entity.
   """
-  def return_on_assets(net_income, average_total_assets), do: net_income / average_total_assets
+  def return_on_assets(net_income, average_total_assets)
+      when average_total_assets != 0,
+      do: net_income / average_total_assets
 
   @doc """
   Calculates the return on equity.
@@ -1271,8 +1355,9 @@ defmodule FinanceFormulas do
   * `net_income` - The net income of the entity.
   * `average_shareholder_equity` - The average shareholder equity of the entity.
   """
-  def return_on_equity(net_income, average_shareholder_equity),
-    do: net_income / average_shareholder_equity
+  def return_on_equity(net_income, average_shareholder_equity)
+      when average_shareholder_equity != 0,
+      do: net_income / average_shareholder_equity
 
   @doc """
   Calculates the return on investment.
@@ -1286,8 +1371,9 @@ defmodule FinanceFormulas do
   * `initial_investment` - The initial investment of the entity.
   * `earnings` - The earnings of the entity.
   """
-  def return_on_investment(initial_investment, earnings),
-    do: (earnings - initial_investment) / initial_investment
+  def return_on_investment(initial_investment, earnings)
+      when initial_investment != 0,
+      do: (earnings - initial_investment) / initial_investment
 
   @doc """
   Calculates the risk premium.
@@ -1315,7 +1401,9 @@ defmodule FinanceFormulas do
 
   * `rate_of_return` - The rate of return as a whole number.
   """
-  def rule_of_72(rate_of_return), do: 72 / rate_of_return
+  def rule_of_72(rate_of_return)
+      when rate_of_return != 0,
+      do: 72 / rate_of_return
 
   @doc """
   Calculates the simple interest.
@@ -1345,8 +1433,9 @@ defmodule FinanceFormulas do
   * `salvage_value` - The salvage value.
   * `useful_life` - The useful life.
   """
-  def straight_line_depreciation(initial_value, salvage_value, useful_life),
-    do: (initial_value - salvage_value) / useful_life
+  def straight_line_depreciation(initial_value, salvage_value, useful_life)
+      when useful_life != 0,
+      do: (initial_value - salvage_value) / useful_life
 
   @doc """
   Calculates the tax equivalent yield.
@@ -1360,7 +1449,9 @@ defmodule FinanceFormulas do
   * `tax_free_yield` - The tax free yield.
   * `tax_rate` - The tax rate.
   """
-  def tax_equivalent_yield(tax_free_yield, tax_rate), do: tax_free_yield / (1 - tax_rate)
+  def tax_equivalent_yield(tax_free_yield, tax_rate)
+      when tax_rate != 1,
+      do: tax_free_yield / (1 - tax_rate)
 
   @doc """
   Calculates the times interest earned ratio.
@@ -1374,7 +1465,9 @@ defmodule FinanceFormulas do
   * `ebit` - The earnings before interest and taxes of the entity.
   * `interest_expense` - The interest expense of the entity.
   """
-  def times_interest_earned_ratio(ebit, interest_expense), do: ebit / interest_expense
+  def times_interest_earned_ratio(ebit, interest_expense)
+      when interest_expense != 0,
+      do: ebit / interest_expense
 
   @doc """
   Calculates the total stock return.
@@ -1389,8 +1482,9 @@ defmodule FinanceFormulas do
   * `ending_stock_price` - The ending stock price.
   * `dividends` - The dividends.
   """
-  def total_stock_return(initial_stock_price, ending_stock_price, dividends),
-    do: (ending_stock_price - initial_stock_price + dividends) / initial_stock_price
+  def total_stock_return(initial_stock_price, ending_stock_price, dividends)
+      when initial_stock_price != 0,
+      do: (ending_stock_price - initial_stock_price + dividends) / initial_stock_price
 
   @doc """
   Calculates the weighted average.
@@ -1421,8 +1515,9 @@ defmodule FinanceFormulas do
   * `current_year` - The current year value
   * `previous_year` - The previous year value
   """
-  def year_over_year(current_year, previous_year),
-    do: (current_year - previous_year) / previous_year
+  def year_over_year(current_year, previous_year)
+      when previous_year != 0,
+      do: (current_year - previous_year) / previous_year
 
   @doc """
   Transforms a number to a percentage.
