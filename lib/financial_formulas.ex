@@ -1,4 +1,4 @@
-defmodule FinanceFormulas do
+defmodule FinancialFormulas do
   @doc """
   Calculates the annual percentage yield (APY) of an investment.
 
@@ -10,11 +10,16 @@ defmodule FinanceFormulas do
 
   ## Required
 
-  * `annual_interest_rate` - The annual interest rate of the investment.
+  * `nominal_interest_rate` - The nominal interest rate of the investment.
   * `number_of_times_compounded` - The number of times the interest is compounded per year.
+
+  ## Examples
+
+  iex> FinancialFormulas.annual_percentage_yield(0.025, 12)
+  0.025288456983290075
   """
-  def annual_percentage_yield(annual_interest_rate, number_of_times_compounded) do
-    :math.pow(1 + annual_interest_rate / number_of_times_compounded, number_of_times_compounded) -
+  def annual_percentage_yield(nominal_interest_rate, number_of_times_compounded) do
+    :math.pow(1 + nominal_interest_rate / number_of_times_compounded, number_of_times_compounded) -
       1
   end
 
@@ -29,6 +34,11 @@ defmodule FinanceFormulas do
 
   * `total_assets` - The total assets of the entity.
   * `sales_revenue` - The sales/revenue of the entity.
+
+  ## Examples
+
+  iex> FinancialFormulas.asset_to_sales_ratio(100000, 50000)
+  2.0
   """
   def asset_to_sales_ratio(total_assets, sales_revenue)
       when sales_revenue != 0,
@@ -45,6 +55,11 @@ defmodule FinanceFormulas do
 
   * `sales_revenue` - The sales/revenue of the entity.
   * `total_asset` - The total assets of the entity.
+
+  ## Examples
+
+  iex> FinancialFormulas.asset_turnover_ratio(50000, 100000)
+  0.5
   """
   def asset_turnover_ratio(sales_revenue, total_assets)
       when total_assets != 0,
@@ -60,6 +75,11 @@ defmodule FinanceFormulas do
   ## Required
 
   * `receivables_turnover_ratio` - The receivables turnover ratio of the entity.
+
+  ## Examples
+
+  iex> FinancialFormulas.average_collection_period(10)
+  36.5
   """
   def average_collection_period(receivables_turnover_ratio)
       when receivables_turnover_ratio != 0,
@@ -70,15 +90,55 @@ defmodule FinanceFormulas do
 
   ## Formula
 
-  (ending_inventory + beginning_inventory) / 2
+  (ending_inventory + beginning_inventory) / number_of_periods
 
   ## Required
 
   * `ending_inventory` - The ending inventory of the entity.
   * `beginning_inventory` - The beginning inventory of the entity.
+
+  ## Optional
+
+  * `number_of_periods` - The number of periods. Defaults to 2.
+
+  ## Examples
+
+  iex> FinancialFormulas.average_inventory(100, 50)
+  75.0
+
+  iex> FinancialFormulas.average_inventory(100, 50, 3)
+  50.0
   """
-  def average_inventory(ending_inventory, beginning_inventory),
-    do: (ending_inventory + beginning_inventory) / 2
+  def average_inventory(ending_inventory, beginning_inventory, number_of_periods \\ 2)
+      when number_of_periods != 0,
+      do: (ending_inventory + beginning_inventory) / number_of_periods
+
+  @doc """
+  Calculates the average inventory period of an entity.
+
+  ## Formula
+
+  number_of_days_in_period / inventory_turnover
+
+  ## Required
+
+  * `inventory_turnover` - The inventory turnover of the entity.
+
+  ## Optional
+
+  * `days_in_period` - The number of days in the period. Defaults to 365.
+
+  ## Examples
+
+  iex> FinancialFormulas.average_inventory_period(10)
+  36.5
+
+  iex> FinancialFormulas.average_inventory_period(10, 180)
+  18.0
+  """
+  def average_inventory_period(inventory_turnover, days_in_period \\ 365)
+      when days_in_period != 0,
+      do: days_in_period / inventory_turnover
 
   @doc """
   Calculates the average payment period of an entity.
@@ -91,9 +151,20 @@ defmodule FinanceFormulas do
 
   * `average_accounts_payable` - The average accounts payable of the entity.
   * `credit_purchases` - The credit purchases of the entity.
+
+  ## Optional
+
   * `days_in_period` - The number of days in the period.
+
+  ## Examples
+
+  iex> FinancialFormulas.average_payment_period(23000, 100000)
+  83.95
+
+  iex> FinancialFormulas.average_payment_period(100, 200, 180)
+  90.0
   """
-  def average_payment_period(average_accounts_payable, credit_purchases, days_in_period)
+  def average_payment_period(average_accounts_payable, credit_purchases, days_in_period \\ 365)
       when days_in_period != 0,
       do: average_accounts_payable / (credit_purchases / days_in_period)
 
@@ -108,6 +179,11 @@ defmodule FinanceFormulas do
 
   * `ask_price` - The ask price of the security.
   * `bid_price` - The bid price of the security.
+
+  ## Example
+
+  iex> FinancialFormulas.bid_ask_spread(10, 8)
+  2
   """
   def bid_ask_spread(ask_price, bid_price), do: ask_price - bid_price
 
@@ -121,31 +197,49 @@ defmodule FinanceFormulas do
   ## Required
 
   * `face_value` - The face value of the bond.
-  * `bond_price` - The price of the bond.
+  * `purchase_price` - The purchase price of the bond.
 
   ## Optional
 
   * `days_to_maturity` - The number of days until the bond matures. Defaults to 365.
+
+  ## Examples
+
+  iex> FinancialFormulas.bond_equivalent_yield(110, 100, 180)
+  0.20277777777777778
+
+  iex> FinancialFormulas.bond_equivalent_yield(110, 100)
+  0.1
   """
-  def bond_equivalent_yield(face_value, bond_price, days_to_maturity \\ 365)
-      when bond_price != 0 and days_to_maturity != 0,
-      do: (face_value - bond_price) / bond_price * (365 / days_to_maturity)
+  def bond_equivalent_yield(face_value, purchase_price, days_to_maturity \\ 365)
+      when purchase_price != 0 and days_to_maturity != 0,
+      do: (face_value - purchase_price) / purchase_price * 365 / days_to_maturity
 
   @doc """
   Calculates the book value per share of an entity.
 
   ## Formula
 
-  total_equity / number_of_shares
+  (total_common_equity - perferred_equity) / weighted_average_number_of_shares_outstanding
 
   ## Required
 
-  * `total_common_equity` - The total common equity of the entity.
-  * `number_of_common_shares` - The number of common shares of the entity.
+  * `shareholders_equity` - The shareholders equity of the entity.
+  * `perferred_equity` - The perferred equity of the entity.
+  * `weighted_average_number_of_shares_outstanding` - The weighted average number of shares outstanding of the entity.
+
+  ## Examples
+
+  iex> FinancialFormulas.book_value_per_share(100, 10, 10)
+  9.0
   """
-  def book_value_per_share(total_common_equity, number_of_common_shares)
-      when number_of_common_shares != 0,
-      do: total_common_equity / number_of_common_shares
+  def book_value_per_share(
+        shareholders_equity,
+        perferred_equity,
+        weighted_average_number_of_shares_outstanding
+      )
+      when weighted_average_number_of_shares_outstanding != 0,
+      do: (shareholders_equity - perferred_equity) / weighted_average_number_of_shares_outstanding
 
   @doc """
   Calculates the capital asset pricing model (CAPM).
@@ -158,10 +252,15 @@ defmodule FinanceFormulas do
 
   * `risk_free_rate` - The risk free rate.
   * `beta` - The beta of the investment.
-  * `return_on_the_market` - The return on the market.
+  * `market_retrun` - The return on the market.
+
+  ## Examples
+
+  iex> FinancialFormulas.capital_asset_pricing_model(0.03, 0.8, 0.1)
+  0.08600000000000001
   """
-  def capital_asset_pricing_model(risk_free_rate, beta, return_on_the_market),
-    do: risk_free_rate + beta * (return_on_the_market - risk_free_rate)
+  def capital_asset_pricing_model(risk_free_rate, beta, market_retrun),
+    do: risk_free_rate + beta * (market_retrun - risk_free_rate)
 
   @doc """
   Calculates the capital gains yield of an investment.
@@ -174,6 +273,11 @@ defmodule FinanceFormulas do
 
   * `initial_price` - The initial price of the investment.
   * `final_price` - The final price of the investment.
+
+  ## Examples
+
+  iex> FinancialFormulas.capital_gains_yield(10, 12)
+  0.2
   """
   def capital_gains_yield(initial_price, final_price)
       when initial_price != 0,
@@ -191,6 +295,11 @@ defmodule FinanceFormulas do
   * `days_inventory_outstanding` - The days inventory outstanding of the entity.
   * `days_sales_outstanding` - The days sales outstanding of the entity.
   * `days_payable_outstanding` - The days payable outstanding of the entity.
+
+  ## Examples
+
+  iex> FinancialFormulas.cash_conversion_cycle(82, 34, 66)
+  50
   """
   def cash_conversion_cycle(
         days_inventory_outstanding,
@@ -610,8 +719,13 @@ defmodule FinanceFormulas do
   * `operating_expenses` - The operating expenses of the entity.
   * `depreciation_and_amortization` - The depreciation and amortization of the entity.
   """
-  def ebida(sales_revenue, cost_of_goods_sold, operating_expenses, depreciation_and_amortization),
-    do: sales_revenue - cost_of_goods_sold - operating_expenses - depreciation_and_amortization
+  def ebitda(
+        sales_revenue,
+        cost_of_goods_sold,
+        operating_expenses,
+        depreciation_and_amortization
+      ),
+      do: sales_revenue - cost_of_goods_sold - operating_expenses - depreciation_and_amortization
 
   @doc """
   Calculates the equity multiplier of an entity.
@@ -802,16 +916,16 @@ defmodule FinanceFormulas do
 
   ## Formula
 
-  sales / inventory
+  cost_of_goods_sold / average_inventory
 
   ## Required
 
-  * `sales_revenue` - The sales/revenue of the entity.
-  * `inventory` - The inventory of the entity.
+  * `cost_of_goods_sold` - The cost of goods sold of the entity.
+  * `average_inventory` - The average inventory of the entity.
   """
-  def inventory_turnover_ratio(sales_revenue, inventory)
-      when inventory != 0,
-      do: sales_revenue / inventory
+  def inventory_turnover_ratio(cost_of_goods_sold, average_inventory)
+      when average_inventory != 0,
+      do: cost_of_goods_sold / average_inventory
 
   @doc """
   Calculates the loan to deposit ratio of an entity.
