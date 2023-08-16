@@ -40,9 +40,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.asset_to_sales_ratio(100000, 50000)
   2.0
   """
-  def asset_to_sales_ratio(total_assets, sales_revenue)
-      when sales_revenue != 0,
-      do: total_assets / sales_revenue
+  def asset_to_sales_ratio(total_assets, sales_revenue) when sales_revenue != 0,
+    do: total_assets / sales_revenue
 
   @doc """
   Calculates the asset turnover ratio of an entity.
@@ -61,9 +60,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.asset_turnover_ratio(50000, 100000)
   0.5
   """
-  def asset_turnover_ratio(sales_revenue, total_assets)
-      when total_assets != 0,
-      do: sales_revenue / total_assets
+  def asset_turnover_ratio(sales_revenue, total_assets) when total_assets != 0,
+    do: sales_revenue / total_assets
 
   @doc """
   Calculates the average collection period of an entity.
@@ -81,9 +79,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.average_collection_period(10)
   36.5
   """
-  def average_collection_period(receivables_turnover_ratio)
-      when receivables_turnover_ratio != 0,
-      do: 365 / receivables_turnover_ratio
+  def average_collection_period(receivables_turnover_ratio) when receivables_turnover_ratio != 0,
+    do: 365 / receivables_turnover_ratio
 
   @doc """
   Calculates the average inventory of an entity.
@@ -279,9 +276,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.capital_gains_yield(10, 12)
   0.2
   """
-  def capital_gains_yield(initial_price, final_price)
-      when initial_price != 0,
-      do: (final_price - initial_price) / initial_price
+  def capital_gains_yield(initial_price, final_price) when initial_price != 0,
+    do: (final_price - initial_price) / initial_price
 
   @doc """
   Calculates the cash conversion cycle of an entity.
@@ -461,9 +457,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.cost_to_income_ratio(100, 200)
   0.5
   """
-  def cost_to_income_ratio(operational_costs, operational_income)
-      when operational_income != 0,
-      do: operational_costs / operational_income
+  def cost_to_income_ratio(operational_costs, operational_income) when operational_income != 0,
+    do: operational_costs / operational_income
 
   @doc """
   Calculates the current ratio of an entity.
@@ -482,9 +477,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.current_ratio(100, 200)
   0.5
   """
-  def current_ratio(current_assets, current_liabilities)
-      when current_liabilities != 0,
-      do: current_assets / current_liabilities
+  def current_ratio(current_assets, current_liabilities) when current_liabilities != 0,
+    do: current_assets / current_liabilities
 
   @doc """
   Calculates the current yield of a bond.
@@ -503,9 +497,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.current_yield(100, 200)
   0.5
   """
-  def current_yield(annual_coupons, current_price)
-      when current_price != 0,
-      do: annual_coupons / current_price
+  def current_yield(annual_coupons, current_price) when current_price != 0,
+    do: annual_coupons / current_price
 
   @doc """
   Calculates the inventory turnover of an entity.
@@ -523,9 +516,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.days_in_inventory(10)
   36.5
   """
-  def days_in_inventory(inventory_turnover)
-      when inventory_turnover != 0,
-      do: 365 / inventory_turnover
+  def days_in_inventory(inventory_turnover) when inventory_turnover != 0,
+    do: 365 / inventory_turnover
 
   @doc """
   Calculates the days sales of inventory of an entity.
@@ -544,9 +536,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.days_sales_of_inventory(100, 200)
   182.5
   """
-  def days_sales_of_inventory(average_inventory, cost_of_goods_sold)
-      when cost_of_goods_sold != 0,
-      do: average_inventory / cost_of_goods_sold * 365
+  def days_sales_of_inventory(average_inventory, cost_of_goods_sold) when cost_of_goods_sold != 0,
+    do: average_inventory / cost_of_goods_sold * 365
 
   @doc """
   Calculates the days sales outstanding of an entity.
@@ -586,9 +577,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.days_payable_outstanding(100, 200)
   182.5
   """
-  def days_payable_outstanding(accounts_payable, cost_of_goods_sold)
-      when cost_of_goods_sold != 0,
-      do: accounts_payable / cost_of_goods_sold * 365
+  def days_payable_outstanding(accounts_payable, cost_of_goods_sold) when cost_of_goods_sold != 0,
+    do: accounts_payable / cost_of_goods_sold * 365
 
   @doc """
   Calculates the debt coverage ratio of an entity.
@@ -607,9 +597,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.debt_coverage_ratio(100, 200)
   0.5
   """
-  def debt_coverage_ratio(net_operating_income, total_debt_service)
-      when total_debt_service != 0,
-      do: net_operating_income / total_debt_service
+  def debt_coverage_ratio(net_operating_income, total_debt_service) when total_debt_service != 0,
+    do: net_operating_income / total_debt_service
 
   @doc """
   Calculates the debt ratio of an entity.
@@ -628,9 +617,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.debt_ratio(100, 200)
   0.5
   """
-  def debt_ratio(total_liabilities, total_assets)
-      when total_assets != 0,
-      do: total_liabilities / total_assets
+  def debt_ratio(total_liabilities, total_assets) when total_assets != 0,
+    do: total_liabilities / total_assets
 
   @doc """
   Calculates the debt to equity ratio of an entity.
@@ -649,9 +637,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.debt_to_equity_ratio(100, 200)
   0.5
   """
-  def debt_to_equity_ratio(total_liabilities, total_equity)
-      when total_equity != 0,
-      do: total_liabilities / total_equity
+  def debt_to_equity_ratio(total_liabilities, total_equity) when total_equity != 0,
+    do: total_liabilities / total_equity
 
   @doc """
   Calculates the debt to income ratio of an entity.
@@ -670,9 +657,7 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.debt_to_income_ratio(100, 200)
   0.5
   """
-  def debt_to_income_ratio(debt, income)
-      when income != 0,
-      do: debt / income
+  def debt_to_income_ratio(debt, income) when income != 0, do: debt / income
 
   @doc """
   Calculates the diluted earnings per share of an entity.
@@ -716,9 +701,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.dividend_payout_ratio(100, 200)
   0.5
   """
-  def dividend_payout_ratio(dividends, net_income)
-      when net_income != 0,
-      do: dividends / net_income
+  def dividend_payout_ratio(dividends, net_income) when net_income != 0,
+    do: dividends / net_income
 
   @doc """
   Calculates the dividend yield of an entity.
@@ -737,9 +721,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.dividend_yield(100, 200)
   0.5
   """
-  def dividend_yield(dividends, current_price)
-      when current_price != 0,
-      do: dividends / current_price
+  def dividend_yield(dividends, current_price) when current_price != 0,
+    do: dividends / current_price
 
   @doc """
   Calculates the divdends per share of an entity.
@@ -758,9 +741,7 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.dividends_per_share(100, 200)
   0.5
   """
-  def dividends_per_share(dividends, shares)
-      when shares != 0,
-      do: dividends / shares
+  def dividends_per_share(dividends, shares) when shares != 0, do: dividends / shares
 
   @doc """
   Calculates the doubling time of an investment.
@@ -796,9 +777,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.doubling_time_continuous_compounding(0.1)
   6.931471805599452
   """
-  def doubling_time_continuous_compounding(rate_of_returns)
-      when rate_of_returns != 0,
-      do: :math.log(2) / rate_of_returns
+  def doubling_time_continuous_compounding(rate_of_returns) when rate_of_returns != 0,
+    do: :math.log(2) / rate_of_returns
 
   @doc """
   Calculates the doubling time of an investment with simple interest.
@@ -816,9 +796,7 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.doubling_time_simple(0.1)
   10.0
   """
-  def doubling_time_simple(rate_of_returns)
-      when rate_of_returns != 0,
-      do: 1 / rate_of_returns
+  def doubling_time_simple(rate_of_returns) when rate_of_returns != 0, do: 1 / rate_of_returns
 
   @doc """
   Calculates the earnings per share of an entity.
@@ -837,9 +815,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.earnings_per_share(100, 200)
   0.5
   """
-  def earnings_per_share(net_income, average_shares)
-      when average_shares != 0,
-      do: net_income / average_shares
+  def earnings_per_share(net_income, average_shares) when average_shares != 0,
+    do: net_income / average_shares
 
   @doc """
   Calculates the ebit of an entity.
@@ -906,9 +883,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.equity_multiplier(100, 200)
   0.5
   """
-  def equity_multiplier(total_assets, total_equity)
-      when total_equity != 0,
-      do: total_assets / total_equity
+  def equity_multiplier(total_assets, total_equity) when total_equity != 0,
+    do: total_assets / total_equity
 
   @doc """
   Calculates the estimated earnings of an entity.
@@ -1052,9 +1028,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.future_value_of_annuity(100, 0.1, 2)
   210.0000000000002
   """
-  def future_value_of_annuity(payment, interest_rate, number_of_payments)
-      when interest_rate != 0,
-      do: payment * ((:math.pow(1 + interest_rate, number_of_payments) - 1) / interest_rate)
+  def future_value_of_annuity(payment, interest_rate, number_of_payments) when interest_rate != 0,
+    do: payment * ((:math.pow(1 + interest_rate, number_of_payments) - 1) / interest_rate)
 
   @doc """
   Calculates the geometric mean of a set of returns.
@@ -1098,9 +1073,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.gross_profit_margin(100, 200)
   -1.0
   """
-  def gross_profit_margin(sales_revenue, cost_of_goods_sold)
-      when sales_revenue != 0,
-      do: (sales_revenue - cost_of_goods_sold) / sales_revenue
+  def gross_profit_margin(sales_revenue, cost_of_goods_sold) when sales_revenue != 0,
+    do: (sales_revenue - cost_of_goods_sold) / sales_revenue
 
   @doc """
   Calculates the interest coverage ratio of an entity.
@@ -1119,9 +1093,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.interest_coverage_ratio(100, 200)
   0.5
   """
-  def interest_coverage_ratio(ebit, interest_expense)
-      when interest_expense != 0,
-      do: ebit / interest_expense
+  def interest_coverage_ratio(ebit, interest_expense) when interest_expense != 0,
+    do: ebit / interest_expense
 
   @doc """
   Calculates the inventory turnover ratio of an entity.
@@ -1140,9 +1113,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.inventory_turnover_ratio(100, 200)
   0.5
   """
-  def inventory_turnover_ratio(cost_of_goods_sold, average_inventory)
-      when average_inventory != 0,
-      do: cost_of_goods_sold / average_inventory
+  def inventory_turnover_ratio(cost_of_goods_sold, average_inventory) when average_inventory != 0,
+    do: cost_of_goods_sold / average_inventory
 
   @doc """
   Calculates the loan to deposit ratio of an entity.
@@ -1161,9 +1133,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.loan_to_deposit_ratio(100, 200)
   0.5
   """
-  def loan_to_deposit_ratio(total_loans, total_deposits)
-      when total_deposits != 0,
-      do: total_loans / total_deposits
+  def loan_to_deposit_ratio(total_loans, total_deposits) when total_deposits != 0,
+    do: total_loans / total_deposits
 
   @doc """
   Calculates the margin of safety of an investment.
@@ -1182,9 +1153,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.margin_of_safty(100, 200)
   0.5
   """
-  def margin_of_safty(current_price, intrinsic_value)
-      when intrinsic_value != 0,
-      do: (intrinsic_value - current_price) / intrinsic_value
+  def margin_of_safty(current_price, intrinsic_value) when intrinsic_value != 0,
+    do: (intrinsic_value - current_price) / intrinsic_value
 
   @doc """
   Calculates the market capitalization of an entity.
@@ -1245,9 +1215,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.net_asset_value(100, 200, 300)
   -0.3333333333333333
   """
-  def net_asset_value(assets, liabilities, shares)
-      when shares != 0,
-      do: (assets - liabilities) / shares
+  def net_asset_value(assets, liabilities, shares) when shares != 0,
+    do: (assets - liabilities) / shares
 
   @doc """
   Calculates the net intrest income of an entity.
@@ -1354,9 +1323,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.net_profit_margin(100, 200)
   0.5
   """
-  def net_profit_margin(net_income, sales_revenue)
-      when sales_revenue != 0,
-      do: net_income / sales_revenue
+  def net_profit_margin(net_income, sales_revenue) when sales_revenue != 0,
+    do: net_income / sales_revenue
 
   @doc """
   Calculates the net working capital of an entity.
@@ -1415,9 +1383,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.operating_margin(100, 200)
   0.5
   """
-  def operating_margin(operating_income, sales_revenue)
-      when sales_revenue != 0,
-      do: operating_income / sales_revenue
+  def operating_margin(operating_income, sales_revenue) when sales_revenue != 0,
+    do: operating_income / sales_revenue
 
   @doc """
   Calculates the payables turnover ratio of an entity.
@@ -1457,9 +1424,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.payback_period(100, 200)
   0.5
   """
-  def payback_period(initial_investment, periodic_cash_flows)
-      when periodic_cash_flows != 0,
-      do: initial_investment / periodic_cash_flows
+  def payback_period(initial_investment, periodic_cash_flows) when periodic_cash_flows != 0,
+    do: initial_investment / periodic_cash_flows
 
   @doc """
   Calculates the perpetuity yield.
@@ -1478,9 +1444,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.perpetuity_yield(100, 200)
   0.5
   """
-  def perpetuity_yield(payment, present_value)
-      when present_value != 0,
-      do: payment / present_value
+  def perpetuity_yield(payment, present_value) when present_value != 0,
+    do: payment / present_value
 
   @doc """
   Calculates the preferred stock value.
@@ -1499,9 +1464,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.preferred_stock_value(100, 200)
   0.5
   """
-  def preferred_stock_value(dividend, discount_rate)
-      when discount_rate != 0,
-      do: dividend / discount_rate
+  def preferred_stock_value(dividend, discount_rate) when discount_rate != 0,
+    do: dividend / discount_rate
 
   @doc """
   Calculates the present value.
@@ -1563,9 +1527,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.present_value_of_perpetuity(100, 200)
   0.5
   """
-  def present_value_of_perpetuity(coupon_per_period, discount_rate)
-      when discount_rate != 0,
-      do: coupon_per_period / discount_rate
+  def present_value_of_perpetuity(coupon_per_period, discount_rate) when discount_rate != 0,
+    do: coupon_per_period / discount_rate
 
   @doc """
   Calculates the price to book value.
@@ -1584,9 +1547,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.price_to_book_value(100, 200)
   0.5
   """
-  def price_to_book_value(price_per_share, book_value_per_share)
-      when book_value_per_share != 0,
-      do: price_per_share / book_value_per_share
+  def price_to_book_value(price_per_share, book_value_per_share) when book_value_per_share != 0,
+    do: price_per_share / book_value_per_share
 
   @doc """
   Calculates the price to cash flow.
@@ -1626,9 +1588,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.price_to_dividend_ratio(100, 200)
   0.5
   """
-  def price_to_dividend_ratio(price_per_share, dividend_per_share)
-      when dividend_per_share != 0,
-      do: price_per_share / dividend_per_share
+  def price_to_dividend_ratio(price_per_share, dividend_per_share) when dividend_per_share != 0,
+    do: price_per_share / dividend_per_share
 
   @doc """
   Calculates the price to earnings ratio.
@@ -1647,9 +1608,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.price_to_earnings_ratio(100, 200)
   0.5
   """
-  def price_to_earnings_ratio(price_per_share, earnings_per_share)
-      when earnings_per_share != 0,
-      do: price_per_share / earnings_per_share
+  def price_to_earnings_ratio(price_per_share, earnings_per_share) when earnings_per_share != 0,
+    do: price_per_share / earnings_per_share
 
   @doc """
   Calculates the price to sales ratio.
@@ -1668,9 +1628,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.price_to_sales_ratio(100, 200)
   0.5
   """
-  def price_to_sales_ratio(price_per_share, sales_per_share)
-      when sales_per_share != 0,
-      do: price_per_share / sales_per_share
+  def price_to_sales_ratio(price_per_share, sales_per_share) when sales_per_share != 0,
+    do: price_per_share / sales_per_share
 
   @doc """
   Calculates the profitability index.
@@ -1710,9 +1669,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.quick_ratio(100, 200)
   0.5
   """
-  def quick_ratio(quick_assets, current_liabilities)
-      when current_liabilities != 0,
-      do: quick_assets / current_liabilities
+  def quick_ratio(quick_assets, current_liabilities) when current_liabilities != 0,
+    do: quick_assets / current_liabilities
 
   @doc """
   Calculates the quick ratio.
@@ -1732,9 +1690,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.quick_ratio(100, 200, 300)
   -0.3333333333333333
   """
-  def quick_ratio(current_assets, inventory, current_liabilities)
-      when current_liabilities != 0,
-      do: (current_assets - inventory) / current_liabilities
+  def quick_ratio(current_assets, inventory, current_liabilities) when current_liabilities != 0,
+    do: (current_assets - inventory) / current_liabilities
 
   @doc """
   Calculates the real GDP.
@@ -1753,9 +1710,7 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.real_gdp(100, 200)
   0.5
   """
-  def real_gdp(nominal_gdp, gdp_deflator)
-      when gdp_deflator != 0,
-      do: nominal_gdp / gdp_deflator
+  def real_gdp(nominal_gdp, gdp_deflator) when gdp_deflator != 0, do: nominal_gdp / gdp_deflator
 
   @doc """
   Calculates the receivables turnover ratio of an entity.
@@ -1814,9 +1769,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.retention_ratio(100, 200)
   -1.0
   """
-  def retention_ratio(net_income, dividends)
-      when net_income != 0,
-      do: (net_income - dividends) / net_income
+  def retention_ratio(net_income, dividends) when net_income != 0,
+    do: (net_income - dividends) / net_income
 
   @doc """
   Calculates the return on assets.
@@ -1835,9 +1789,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.return_on_assets(100, 200)
   0.5
   """
-  def return_on_assets(net_income, average_total_assets)
-      when average_total_assets != 0,
-      do: net_income / average_total_assets
+  def return_on_assets(net_income, average_total_assets) when average_total_assets != 0,
+    do: net_income / average_total_assets
 
   @doc """
   Calculates the return on equity.
@@ -1877,9 +1830,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.return_on_investment(100, 200)
   1.0
   """
-  def return_on_investment(initial_investment, earnings)
-      when initial_investment != 0,
-      do: (earnings - initial_investment) / initial_investment
+  def return_on_investment(initial_investment, earnings) when initial_investment != 0,
+    do: (earnings - initial_investment) / initial_investment
 
   @doc """
   Calculates the risk premium.
@@ -1917,9 +1869,7 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.rule_of_72(100)
   0.72
   """
-  def rule_of_72(rate_of_return)
-      when rate_of_return != 0,
-      do: 72 / rate_of_return
+  def rule_of_72(rate_of_return) when rate_of_return != 0, do: 72 / rate_of_return
 
   @doc """
   Calculates the simple interest.
@@ -1980,9 +1930,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.tax_equivalent_yield(100, 200)
   -0.5025125628140703
   """
-  def tax_equivalent_yield(tax_free_yield, tax_rate)
-      when tax_rate != 1,
-      do: tax_free_yield / (1 - tax_rate)
+  def tax_equivalent_yield(tax_free_yield, tax_rate) when tax_rate != 1,
+    do: tax_free_yield / (1 - tax_rate)
 
   @doc """
   Calculates the times interest earned ratio.
@@ -2001,9 +1950,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.times_interest_earned_ratio(100, 200)
   0.5
   """
-  def times_interest_earned_ratio(ebit, interest_expense)
-      when interest_expense != 0,
-      do: ebit / interest_expense
+  def times_interest_earned_ratio(ebit, interest_expense) when interest_expense != 0,
+    do: ebit / interest_expense
 
   @doc """
   Calculates the total stock return.
@@ -2066,9 +2014,8 @@ defmodule FinancialFormulas do
   iex> FinancialFormulas.year_over_year(100, 200)
   -0.5
   """
-  def year_over_year(current_year, previous_year)
-      when previous_year != 0,
-      do: (current_year - previous_year) / previous_year
+  def year_over_year(current_year, previous_year) when previous_year != 0,
+    do: (current_year - previous_year) / previous_year
 
   @doc """
   Transforms a number to a percentage.
